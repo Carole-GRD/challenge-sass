@@ -1,0 +1,114 @@
+@import '_variables.scss';
+
+* {
+    padding: $padding-global;
+}
+
+%alert {
+    border: 1px solid #8C8C8C;
+    color: #fff;
+}
+
+@mixin mix-shadow($colorShadow) {
+    -webkit-box-shadow: 10px 10px 15px -4px $colorShadow;
+    -moz-box-shadow: 10px 10px 15px -4px $colorShadow;
+    box-shadow: 10px 10px 15px -4px $colorShadow;
+}
+
+body {
+    font: 100% "Space Mono", monospace;
+    color: $color-grey-1;
+    margin: 0;
+    background-color: $color-white-1;
+    overflow-x: hidden;
+
+    h1,
+    h2,
+    h3 {
+        color: $color-red-1;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    main {
+        padding: 0 $padding-global;
+
+        article {
+            display: flex;
+            flex-wrap: wrap;
+
+            section#selling-points {
+                flex-grow: 2;
+                flex-basis: 100%;
+            }
+
+            section {
+                @include mix-shadow($color-grey-1);
+                flex-grow: 1;
+                flex-basis: 45%;
+                border: 1px $color-grey-2 solid;
+                margin: 16px;
+                clear: both;
+                overflow: auto;
+                box-sizing: border-box;
+
+                code {
+                    background: $color-black-1;
+                    border: 1px solid $color-grey-1;
+                    color: $color-grey-2;
+                    page-break-inside: avoid;
+                    font-family: monospace;
+                    font-size: 15px;
+                    line-height: 1.6;
+                    margin-bottom: 1.6em;
+                    max-width: 100%;
+                    overflow: auto;
+                    display: block;
+                    word-wrap: break-word;
+                }
+                
+                code.before {
+                    float: left;
+                    width: 40%;
+                }
+                
+                code.after {
+                    float: right;
+                    width: 40%;
+                }
+            }
+        }
+
+        .messages {
+
+            .success {
+                @extend %alert;
+                background-color: $color-green;
+            }
+            
+            .error {
+                @extend %alert;
+                background-color: $color-red;
+                &:hover {
+                    background-color: $color-green;
+                }
+            }
+            
+            .warning {
+                @extend %alert;
+                background-color: $color-orange;
+            }
+        }
+    }
+
+    footer {
+        h3 {
+            text-align: center;
+            font-size: 1.5em;
+            padding: $padding-global * 2;
+            margin-bottom: 0px;
+        }
+    }
+}
